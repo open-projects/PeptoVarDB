@@ -1,0 +1,170 @@
+<html>
+<body>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/basic.css">
+</head>
+<div class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="container"></div>
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+						  <span class="sr-only">Toggle navigation</span>
+						  <span class="icon-bar"></span>
+						  <span class="icon-bar"></span>
+						  <span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#"></a>
+					</div>
+					<div class="collapse navbar-collapse" id="navbar-collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="about.html"><span style="color:#F87217">About PeptoVarDB</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<table style="width:100%">
+						<tr>
+							<td>
+								<img src="img/peptides.jpg" height="52" width="52" style="float:left;margin-right:10px;">
+								<div><span class="h1 text-primary">PeptoVar</span><span class="h1" style="color:#F87217">DB</span></div>
+								<div class="text-muted">peptide annotation database</<div>
+							</td>
+							<td style="text-align:right;">
+								<!--  -->
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+    <div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="h3"><i style="color:#F87217">Query to PeptoVar Database</i></div>
+					<br>
+					<p>Examples: <a href="#" id="example_pept"><strong>QRGPLPLSPD</strong></a> , <a href="#" id="example_isoform_id"><strong>rna10001</strong></a> , <a href="#" id="example_variation_id"><strong>rs35001694</strong></a></p>
+					<div class="dict">
+						<form class="dict-form" id="query_form">
+							<div class="form-group input-group input-group-lg">
+								<input autofocus required type="text" class="form-control" placeholder="Peptide sequence or RefSeq isoform_ID or dbSNP variation_ID" id="query_field" name="query_text">
+								<span class="input-group-btn">
+									<button class="btn btn-lg btn-default" type="button" id="clean_query_field"><span class="glyphicon glyphicon-remove text-muted"></span></button>
+								</span>
+							</div>
+							<div class="form-group">
+								<div class="btn-group swapped">
+									<div class="btn-group dropdown-selector" role="group">
+										<button type="submit" class="btn btn-lg btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<span class="text-primary">
+												<span class="dropdown-button-value swapped-value" id="query_type_value">sequence</span> <span class="caret"></span>
+											</span>
+										</button>
+										<input type="hidden" name="query_type" value="sequence" id="input_hidden_field">
+										<ul class="dropdown-menu">
+											<li><a class="dropdown-list" href="#">peptide <span class="dropdown-list-value">sequence</span></a></li>
+											<li><a class="dropdown-list" href="#">RefSeq <span class="dropdown-list-value">isoform_ID</span></a></li>
+											<li><a class="dropdown-list" href="#">dbSNP <span class="dropdown-list-value">variation_ID</span></a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="btn-group">
+									<span style="margin-left: 30px; margin-right: 10px;"> peptide lengths: </span>
+									<span>
+										<span class="checkbox-inline">
+										  <label><input type="checkbox" class="plen" name="peptlen[]" value="8" id="length_8">8</label>
+										</span>
+										<span class="checkbox-inline">
+										  <label><input type="checkbox" class="plen" name="peptlen[]" value="9" id="length_9">9</label>
+										</span>
+										<span class="checkbox-inline">
+										  <label><input type="checkbox" class="plen" name="peptlen[]" value="10" id="length_10">10</label>
+										</span>
+										<span class="checkbox-inline">
+										  <label><input type="checkbox" class="plen" name="peptlen[]" value="11" id="length_11">11</label>
+										</span>
+									</span>
+								</div>
+								<div class="btn-group pull-right" role="group">
+									<button type="submit" class="btn btn-lg btn-primary" id="btn_get_annotation">Get Annotation</button>
+								</div>
+							</div>
+						</form>
+						<hr>
+						<div class="dict-panel ">
+							<div class="panel-body" id="query_result">
+							<!--
+							  <p id="query_message">The result of the query "sequence: SVLSKARSWTF; lengths: 8 9 10 11"</p>
+							  <table class="table table-condensed">
+							    <thead>
+							      <tr>
+								<th>Transcript_ID</th>
+								<th>Chrom</th>
+								<th>Beg</th>
+								<th>End</th>
+								<th>Upstream frame shits</th>
+								<th>Variations inside</th>
+								<th>Peptide</th>
+							      </tr>
+							    </thead>
+							    <tbody id="result_table">
+							      <tr>
+								<td>Trna_01</td>
+								<td>1</td>
+								<td>234234</td>
+								<td>234246</td>
+								<td>-</td>
+								<td>rs12345</td>
+								<td>SVLSKARSWTF</td>
+							      </tr>
+							    </tbody>
+							  </table>
+							-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        	</div>
+		<div class="col-md-10 col-md-offset-1" id="about">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="h3"><i style="color:#F87217">Query Output Format</i></div>
+					<br>
+<div>
+<p>Fields of the query result:</p>
+<ul>
+<li><strong>Transcript_id</strong> - transcript ID;</li>
+<li><strong>Chrom</strong> - chromosome or locus name;</li>
+<li><strong>Beg</strong> - start genome position of the translation region for the peptide *;</li>
+<li><strong>End</strong> - end genome position of the translation region for the peptide *;</li>
+<li><strong>Upstream frame shifts</strong> - frame shifting variations (with allele frequency values) in upstream of the translation region which induced the alternative frame translation (if several combinations of frame shifts can induce the current frame the full set of the combinations will be presented with ‘OR’ delimiter);</li>
+<li><strong>Variations inside</strong> - genome variations (with allele frequency values) inside the translation region and their nucleotide positions in it;</li>
+<li><strong>Peptide</strong> - peptide sequence;</li>
+</ul>
+<p><strong>*</strong> - if the translation region starts and/or ends on a genome insertion the position will be presented as the insertion position plus a half;</p> 
+</div>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/base.js"></script>
+<script src="bootstrap/js/bootstrap.js"></script>
+</body>
+</html>
