@@ -65,9 +65,16 @@ The main idea of PeptoVar is implementation of the potential compound effects of
 PeptoVar is helpful for in-silico prediction of new minor histocompatibility antigen (MiHa), simulation of stem sells transplantation 
 or as peptide database generator for shotgun proteomic studies of immunopeptidome.
 <br>
-The current release of PeptoVarDB based on RefSeq Annotation release 108 (<a href="https://www.ncbi.nlm.nih.gov/refseq/">www.ncbi.nlm.nih.gov/refseq/</a>) and dbSNP Build 152 (<a href="https://www.ncbi.nlm.nih.gov/projects/SNP/">www.ncbi.nlm.nih.gov/projects/SNP/</a>).
-Only genome variants with Minor Allele Frequency > 0.1 was used as the input data for the PeptoVar program. 
+The current release of PeptoVarDB based on RefSeq Annotation release 108 (<a href="https://www.ncbi.nlm.nih.gov/refseq/">www.ncbi.nlm.nih.gov/refseq/</a>) and dbSNP Build 151 (<a href="https://www.ncbi.nlm.nih.gov/projects/SNP/">www.ncbi.nlm.nih.gov/projects/SNP/</a>).
+Only genome variants with Allele Frequency (AF) > 0.01 was used as the input data for the PeptoVar program. 
+The program was started with the next parameters: <br>
+<i>PeptoVar.py -tagaf CAF -minaf 0.01 -peptlen 8 9 10 11 12 -var nonsyn -indir ./input </i>
 </p>
+<hr>
+<p>
+<strong>The project has been supported by Russian Foundation for Basic Research (RFBR) according to the research project №17-04-02186.</strong>
+</p>
+
 				</div>
 			</div>
         	</div>
