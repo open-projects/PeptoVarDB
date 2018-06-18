@@ -53,6 +53,7 @@ CREATE TABLE `var2pept` (
   `type` char(3) NOT NULL,
   `nonsyn` int(1) NOT NULL,
   `location` char(3) NOT NULL,
+  `altframe` int(1) NOT NULL,
   KEY `pept_id` (`pept_id`),
   KEY `snp_id` (`snp_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='latin1_swedish_ci';

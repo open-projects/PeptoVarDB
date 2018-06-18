@@ -7,7 +7,12 @@ open(IN, "< $file_name") || die "can't open file: $file_name\n";
 while(<IN>) {
     chomp;
     my ($pept, $fsh, $var) = (split(/\t/))[0,1,2];
+    my $altframe = 0;
     if ($fsh ne '-') {
+	my $altframe = 0;
+	if ($fsh !~ m/\|-|-\|/) {
+	    $altframe = 1;
+	}
         my @fsh = split(/\|/, $fsh);
         my %paths = ();
         for my $fsh (@fsh) {
@@ -22,9 +27,9 @@ while(<IN>) {
                     for my $varvar (split(/,/, $invar)){
                         while ($varvar =~ m/([^\(\).]+):[^\(\)]+\((alt|ref)\)(\]?)/g) {
                             if ($3) {
-                        	print join("\t", $pept, $chain_n, $1, $2, 0, 'in'), "\n";
+                        	print join("\t", $pept, $chain_n, $1, $2, 0, 'in', $altframe), "\n";
 			    } else {
-				print join("\t", $pept, $chain_n, $1, $2, 1, 'in'), "\n"; # nonsynonymous
+				print join("\t", $pept, $chain_n, $1, $2, 1, 'in', $altframe), "\n"; # nonsynonymous
 			    }
                         }
                     }
@@ -32,7 +37,7 @@ while(<IN>) {
             }
             for my $fsh_var (split(/,/, $fsh_chain)){
                 while ($fsh_var =~ m/([^\(\).]+):[^\(\)]+\(alt\)/g) {
-                    print join("\t", $pept, $chain_n, $1, 'alt', 1, 'up'), "\n";
+                    print join("\t", $pept, $chain_n, $1, 'alt', 1, 'up', $altframe), "\n";
                 }
             }
         }
@@ -44,9 +49,9 @@ while(<IN>) {
                     #while ($varvar =~ m/([^\(\).]+):[^\(\)]+\((alt|ref)\)(&|$)/g) {
 		    while ($varvar =~ m/([^\(\).]+):[^\(\)]+\((alt|ref)\)(\]?)/g) {
                         if ($3) {
-			    print join("\t", $pept, 0, $1, $2, 0, 'in'), "\n";
+			    print join("\t", $pept, 0, $1, $2, 0, 'in', $altframe), "\n";
 			} else {
-			    print join("\t", $pept, 0, $1, $2, 1, 'in'), "\n"; # nonsynonimous
+			    print join("\t", $pept, 0, $1, $2, 1, 'in', $altframe), "\n"; # nonsynonimous
 			}
                     }
                 }
