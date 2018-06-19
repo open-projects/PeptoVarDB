@@ -14,7 +14,7 @@ $(".dropdown-selector .dropdown-list").click(function(e) {
 // query form
 $("#query_form").submit(function(e) {
     e.preventDefault();
-    $('#query_result').html('Sending...');
+    $('#query_result').html('<span>Sending... <img src="img/loader.gif"></span>');
     $.ajax({
         url: '/cgi/peptovar.pl',
         type: 'POST',
