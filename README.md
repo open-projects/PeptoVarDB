@@ -5,12 +5,12 @@ PeptoVarDB - human peptide annotation database for immunology: [www.peptovar.onl
 ## Overview
 
 PeptoVarDB is an on-line database of annotated peptides based on human genome annotation and public data of human genome common variants created with PeptoVar program in the pupulation mode.
-PeptoVar (Peptides of Variations) is a program for annotation of genomic variants in protein coding genes and generation of annotated peptides [https://open-projects.github.io/PeptoVar/](https://open-projects.github.io/PeptoVar/).
+PeptoVar (Peptides of Variations) is a program for annotation of genomic variants in protein coding genes and generation of annotated peptides: [https://open-projects.github.io/PeptoVar/](https://open-projects.github.io/PeptoVar/).
 The main idea of PeptoVar is implementation of the potential compound effects of combining alternate alleles across multiple variant loci in sequence translation.
 PeptoVar is helpful for in-silico prediction of new minor histocompatibility antigen (MiHa), simulation of stem sells transplantation 
 or as peptide database generator for shotgun proteomic studies of immunopeptidome.
 
-## The project was developed under the research project supported by RFBR according to the project number 17-04-02186.
+## The project was developed under the research project supported by RFBR, the project number 17-04-02186.
 
 ## Requirements
 
