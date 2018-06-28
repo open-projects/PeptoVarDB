@@ -21,7 +21,7 @@ or as peptide database generator for shotgun proteomic studies of immunopeptidom
 * MySQL >= 5.7
 
 ## License
-Copyright (c) 2017, D. Malko
+Copyright (c) 2018, D. Malko
 All Rights Reserved
 
 PeptoVar is free software: you can redistribute it and/or modify
