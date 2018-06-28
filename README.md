@@ -1,6 +1,6 @@
 # PeptoVarDB
 
-PeptoVarDB - human peptide annotation database for immunology: [www.peptovar.online](www.peptovar.online)
+PeptoVarDB - human peptide annotation database for immunology: [http://www.peptovar.online](http://www.peptovar.online)
 
 ## Overview
 
