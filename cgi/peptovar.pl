@@ -8,8 +8,7 @@ $CGI::LIST_CONTEXT_WARN = 0;
 
 my $DEBUG = 0;
 
-my $host = '192.168.1.2';
-#my $host = '127.0.0.1';
+my $host = '127.0.0.1';
 my $port = '3306';
 my $user = 'www';
 my $pass = 'wwwtrnimmuno';
@@ -20,11 +19,16 @@ my $qtype = param('query_type');
 my @qlen = param('peptlen[]');
 
 $qdata =~ s/[ ,;].*//; # no multiple queries!
+$qdata = substr($qdata, 0, 1000);
 
 print header();
 
 my $result = '<p id="query_message"><strong>The query: </strong>';
-$result .= "$qtype = $qdata; peptide_length(s) = ".join(", ", @qlen)."</p>\n";
+if (@qlen) {
+    $result .= "$qtype = $qdata; peptide_length(s) = ".join(", ", @qlen)."</p>\n";
+} else {
+    $result .= "$qtype = $qdata; peptide_length(s) = default</p>\n";
+}
 $result .= table_header();
 my @data = ();
 
@@ -35,7 +39,11 @@ if (!$dbh) {
 } else {
     if ($qtype eq 'sequence' && $qdata !~ m/[^A-Z]/i) {
         if (@qlen == 0) {
-            push(@qlen, length($qdata));
+	    if (length($qdata) <= 12) {
+        	push(@qlen, length($qdata));
+	    } else {
+		push(@qlen, 9); # default_value = 9
+	    }
         }
         for my $len (@qlen) {
             my $pos = 0;
@@ -44,7 +52,7 @@ if (!$dbh) {
                 get_pep($seq);
             }
         }
-    } elsif ($qtype eq 'isoform_ID' && $qdata !~ m/[^A-Z0-9_:#-]/i) {
+    } elsif ($qtype eq 'transcript_ID' && $qdata !~ m/[^A-Z0-9_:#-]/i) {
         if (@qlen == 0) {
             push(@qlen, 9); # default_value = 9
         }
@@ -82,7 +90,7 @@ print $result;
 ###################### subs #############################
 sub get_pep {
     my $select_peptide = $dbh->prepare(qq/
-        SELECT GROUP_CONCAT(DISTINCT transcript_id SEPARATOR ' '),
+        SELECT GROUP_CONCAT(DISTINCT transcript_id SEPARATOR ', '),
         chrom, beg, end, upstream_fshifts, variations, peptide
         FROM peptides
         WHERE peptide = ?
@@ -113,7 +121,7 @@ sub get_trn {
 
 sub get_var {
     my $select_variation = $dbh->prepare(qq/
-        SELECT GROUP_CONCAT(DISTINCT transcript_id SEPARATOR ' '),
+        SELECT GROUP_CONCAT(DISTINCT transcript_id SEPARATOR ', '),
         chrom, beg, end, upstream_fshifts, variations, peptide
         FROM peptides AS t1 INNER JOIN var2pept AS t2 USING(pept_id)
         WHERE snp_id = ? AND length = ?
@@ -164,9 +172,10 @@ sub upstrclean {
     my $field = shift;
     my %fields = ();
     for my $path (split(/\|/, $field)) {
+	$path =~ s/,/, /g;
         $fields{$path} = 1;
     }
-    $field = join('<strong> OR <\/strong>', keys %fields);
+    $field = join(' <strong>OR</strong> ', keys %fields);
     return $field;
 }
 

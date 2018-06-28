@@ -52,8 +52,8 @@ $("#example_pept").click(function(){
 
 $("#example_isoform_id").click(function(){
     $("#query_field").val($("#example_isoform_id").text());
-    $("#input_hidden_field").val('isoform_ID');
-    $("#query_type_value").text('isoform_ID');
+    $("#input_hidden_field").val('transcript_ID');
+    $("#query_type_value").text('transcript_ID');
     $("#length_9").prop('checked', true);
 });
 
