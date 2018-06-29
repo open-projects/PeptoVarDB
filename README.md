@@ -10,8 +10,6 @@ The main idea of PeptoVar is implementation of the potential compound effects of
 PeptoVar is helpful for in-silico prediction of new minor histocompatibility antigen (MiHa), simulation of stem sells transplantation 
 or as peptide database generator for shotgun proteomic studies of immunopeptidome.
 
-## The project was supported by RFBR, project number 17-04-02186.
-
 ## Requirements
 
 * Linux
@@ -20,7 +18,8 @@ or as peptide database generator for shotgun proteomic studies of immunopeptidom
 * DBD::mysql perl package
 * MySQL >= 5.7
 
-## 
+## The project was supported by RFBR, project number 17-04-02186.
+
 
 
 
