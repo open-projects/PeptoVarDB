@@ -18,4 +18,4 @@ or as peptide database generator for shotgun proteomic studies of immunopeptidom
 * DBD::mysql perl package
 * MySQL >= 5.7
 
-## The project was supported by RFBR, project number 17-04-02186.
+### The project was supported by RFBR, project number 17-04-02186.
