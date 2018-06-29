@@ -19,8 +19,3 @@ or as peptide database generator for shotgun proteomic studies of immunopeptidom
 * MySQL >= 5.7
 
 ## The project was supported by RFBR, project number 17-04-02186.
-
-
-
-
-
